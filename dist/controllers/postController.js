@@ -10,8 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addComment = exports.updatePost = exports.getPost = exports.getPosts = exports.deletePost = exports.createPost = void 0;
+const postService_1 = require("../services/postService");
 // Create a new post
-const createPost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const postFromDb = yield (0, postService_1.createPostInDb)(req.body);
+        res.status(201).json(postFromDb);
+    }
+    catch (err) {
+        res.status(400).json(err.message);
+    }
+});
 exports.createPost = createPost;
 // Delete a post
 const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
