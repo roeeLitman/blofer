@@ -29,7 +29,22 @@ const CommentSchema = new Schema<IComment>({
   }
 });
 
-const PostSchema = new Schema({})
+const PostSchema = new Schema<IPost>({
+  title:{
+    type: String,
+  },
+  content:{
+    type: String,
+    required:[true, "you most enter writre something"]
+  },
+  author:{
+    type: Schema.Types.ObjectId,
+    required: [true, "missing user id"]
+  },
+  comments:{
+    type: [CommentSchema]
+  }
+})
 
 
 export default mongoose.model<IPost>("Post", PostSchema);

@@ -38,5 +38,20 @@ const CommentSchema = new mongoose_1.Schema({
         required: [true, "you mast enter time"]
     }
 });
-const PostSchema = new mongoose_1.Schema({});
+const PostSchema = new mongoose_1.Schema({
+    title: {
+        type: String,
+    },
+    content: {
+        type: String,
+        required: [true, "you most enter writre something"]
+    },
+    author: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: [true, "missing user id"]
+    },
+    comments: {
+        type: [CommentSchema]
+    }
+});
 exports.default = mongoose_1.default.model("Post", PostSchema);
