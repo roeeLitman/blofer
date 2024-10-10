@@ -27,7 +27,7 @@ const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const postDeleted = yield (0, postService_1.deletePostById)(req.params.id);
         console.log(postDeleted);
-        res.status(204).json(postDeleted);
+        res.status(200).json(postDeleted);
     }
     catch (err) {
         res.status(400).json(err.message);
@@ -35,7 +35,16 @@ const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.deletePost = deletePost;
 // Get all posts
-const getPosts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const postDeleted = yield (0, postService_1.deletePostById)(req.params.id);
+        console.log(postDeleted);
+        res.status(204).json(postDeleted);
+    }
+    catch (err) {
+        res.status(400).json(err.message);
+    }
+});
 exports.getPosts = getPosts;
 // Get a single post by ID
 const getPost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });

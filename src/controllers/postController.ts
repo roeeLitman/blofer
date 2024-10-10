@@ -24,8 +24,7 @@ export const deletePost = async (
   try {
     const postDeleted:IPost = await deletePostById(req.params.id);
     console.log(postDeleted);
-    
-    res.status(204).json(postDeleted);
+    res.status(200).json(postDeleted);
   } catch (err) {
     res.status(400).json((err as Error).message);
   }
@@ -35,8 +34,16 @@ export const deletePost = async (
 export const getPosts = async (
   req: Request,
   res: Response,
-  next: NextFunction
-): Promise<void> => {};
+): Promise<void> => {
+  try {
+    const postDeleted:IPost = await deletePostById(req.params.id);
+    console.log(postDeleted);
+    
+    res.status(204).json(postDeleted);
+  } catch (err) {
+    res.status(400).json((err as Error).message);
+  }
+};
 
 // Get a single post by ID
 export const getPost = async (
