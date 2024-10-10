@@ -1,6 +1,7 @@
 import { promises } from "dns";
 import UserMode,{ IUser,} from "../models/userModel";
 import { log } from "console";
+import userModel from "../models/userModel";
 
 export const entreUserIntoDb = async (userFromClient:IUser): Promise<IUser> => {
     try {
@@ -20,3 +21,14 @@ export const entreUserIntoDb = async (userFromClient:IUser): Promise<IUser> => {
         throw err   
     }
     }
+
+    export const getAllUsers = async (): Promise<IUser[]> => {
+        try {
+            const userFromDb = await userModel.find()
+            console.log(userFromDb);
+            return userFromDb
+        } catch (err) {
+            console.log(err);
+            throw err   
+        }
+        }
