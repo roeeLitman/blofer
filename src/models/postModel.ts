@@ -21,7 +21,8 @@ const CommentSchema = new Schema<IComment>({
   },
   author:{
     type: Schema.Types.ObjectId,
-    required: [true, "user id it missing"]
+    required: [true, "user id it missing"],
+    ref: "User"
   },
   createdAt:{
     type: Date,

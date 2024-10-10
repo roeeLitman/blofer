@@ -8,21 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUser = exports.getUsers = exports.createUser = void 0;
-const userService_1 = require("../services/userService");
-const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.entreUserIntoDb = void 0;
+const userModel_1 = __importDefault(require("../models/userModel"));
+const entreUserIntoDb = (userFromClient) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userFromDb = (0, userService_1.entreUserIntoDb)(req.body);
-        res.status(201).json(userFromDb);
+        const { username, email, profile, posts } = userFromClient;
+        const newUser = new userModel_1.default();
+        newUser.username = username;
+        newUser.email = email;
+        newUser.profile = profile;
+        newUser.posts = posts;
+        const userFromDb = yield newUser.save();
+        console.log(userFromDb);
+        return userFromDb;
     }
     catch (err) {
-        res.status(400).json(err.message);
+        console.log(err);
+        throw err;
     }
 });
-exports.createUser = createUser;
-const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
-exports.getUsers = getUsers;
-const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
-exports.getUser = getUser;
-// Optionally, add DELETE and EDIT functions
+exports.entreUserIntoDb = entreUserIntoDb;

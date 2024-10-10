@@ -31,7 +31,8 @@ const CommentSchema = new mongoose_1.Schema({
     },
     author: {
         type: mongoose_1.Schema.Types.ObjectId,
-        required: [true, "user id it missing"]
+        required: [true, "user id it missing"],
+        ref: "User"
     },
     createdAt: {
         type: Date,
