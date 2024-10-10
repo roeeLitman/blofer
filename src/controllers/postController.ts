@@ -36,7 +36,7 @@ export const getPosts = async (
 ): Promise<void> => {
   try {
     const AllPosts:IPost[] = await getAllPosts(req.params.id);
-    res.status(204).json(AllPosts);
+    res.status(200).json(AllPosts);
   } catch (err) {
     res.status(400).json((err as Error).message);
   }
@@ -46,14 +46,19 @@ export const getPosts = async (
 export const getPost = async (
   req: Request,
   res: Response,
-  next: NextFunction
-): Promise<void> => {};
+): Promise<void> => {
+  try {
+    const AllPosts:IPost[] = await getAllPosts(req.params.id);
+    res.status(200).json(AllPosts);
+  } catch (err) {
+    res.status(400).json((err as Error).message);
+  }
+};
 
 // Update a post
 export const updatePost = async (
   req: Request,
   res: Response,
-  next: NextFunction
 ): Promise<void> => {};
 
 // Add a comment to a post

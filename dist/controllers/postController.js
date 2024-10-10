@@ -37,7 +37,7 @@ exports.deletePost = deletePost;
 const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const AllPosts = yield (0, postService_1.getAllPosts)(req.params.id);
-        res.status(204).json(AllPosts);
+        res.status(200).json(AllPosts);
     }
     catch (err) {
         res.status(400).json(err.message);
@@ -45,10 +45,18 @@ const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getPosts = getPosts;
 // Get a single post by ID
-const getPost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const getPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const AllPosts = yield (0, postService_1.getAllPosts)(req.params.id);
+        res.status(200).json(AllPosts);
+    }
+    catch (err) {
+        res.status(400).json(err.message);
+    }
+});
 exports.getPost = getPost;
 // Update a post
-const updatePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const updatePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
 exports.updatePost = updatePost;
 // Add a comment to a post
 const addComment = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
