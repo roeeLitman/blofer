@@ -12,9 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsers = exports.entreUserIntoDb = void 0;
+exports.getUsersById = exports.getAllUsers = exports.entreUserIntoDb = void 0;
 const userModel_1 = __importDefault(require("../models/userModel"));
-const userModel_2 = __importDefault(require("../models/userModel"));
 const entreUserIntoDb = (userFromClient) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, email, profile, posts } = userFromClient;
@@ -35,7 +34,7 @@ const entreUserIntoDb = (userFromClient) => __awaiter(void 0, void 0, void 0, fu
 exports.entreUserIntoDb = entreUserIntoDb;
 const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userFromDb = yield userModel_2.default.find();
+        const userFromDb = yield userModel_1.default.find();
         console.log(userFromDb);
         return userFromDb;
     }
@@ -45,3 +44,16 @@ const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getAllUsers = getAllUsers;
+const getUsersById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userFromDb = yield userModel_1.default.findById(id);
+        if (!userFromDb)
+            throw new Error("not found usre");
+        return userFromDb;
+    }
+    catch (err) {
+        console.log(err);
+        throw err;
+    }
+});
+exports.getUsersById = getUsersById;
