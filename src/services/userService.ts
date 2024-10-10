@@ -2,6 +2,8 @@ import { promises } from "dns";
 import UserModel, { IUser } from "../models/userModel";
 import { log } from "console";
 import userModel from "../models/userModel";
+import { Types } from "mongoose";
+import { strict } from "assert";
 
 export const entreUserIntoDb = async (
   userFromClient: IUser
@@ -13,6 +15,7 @@ export const entreUserIntoDb = async (
     newUser.email = email;
     newUser.profile = profile;
     newUser.posts = posts;
+    newUser.posts = [];
 
     const userFromDb = await newUser.save();
     console.log(userFromDb);

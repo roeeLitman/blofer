@@ -45,7 +45,8 @@ const UserSchema = new mongoose_1.Schema({
     },
     posts: {
         type: [mongoose_1.Schema.Types.ObjectId],
-        ref: "Post"
+        ref: "Post",
+        required: [true, "you need add Array"]
     },
 });
 exports.default = mongoose_1.default.model("User", UserSchema);

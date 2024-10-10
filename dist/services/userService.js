@@ -22,6 +22,7 @@ const entreUserIntoDb = (userFromClient) => __awaiter(void 0, void 0, void 0, fu
         newUser.email = email;
         newUser.profile = profile;
         newUser.posts = posts;
+        newUser.posts = [];
         const userFromDb = yield newUser.save();
         console.log(userFromDb);
         return userFromDb;
