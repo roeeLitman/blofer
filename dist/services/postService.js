@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPostInDb = void 0;
+exports.deletePostById = exports.createPostInDb = void 0;
 const postModel_1 = __importDefault(require("../models/postModel"));
 const createPostInDb = (postReq) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,3 +29,16 @@ const createPostInDb = (postReq) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.createPostInDb = createPostInDb;
+const deletePostById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const deletePost = yield postModel_1.default.findByIdAndDelete(id);
+        if (!deletePost)
+            throw new Error("not found user");
+        return deletePost;
+    }
+    catch (err) {
+        console.log(err);
+        throw err;
+    }
+});
+exports.deletePostById = deletePostById;

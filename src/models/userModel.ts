@@ -26,12 +26,8 @@ const UserSchema = new Schema<IUser>({
   },
   profile: {
     type: {
-      bio: {
-        type: String,
-      },
-      socialLinks: {
-        type: [String]
-      },
+      bio: String,
+      socialLinks: [String],
     },
   },
   posts: {

@@ -17,4 +17,16 @@ export const createPostInDb = async (postReq:IPost):Promise<IPost> => {
         throw err
     }
 }
+export const deletePostById = async (id:string):Promise<IPost> => {
+    try {  
+
+        const deletePost: IPost | null = await postModel.findByIdAndDelete(id)
+        if(!deletePost) throw new Error("not found user");        
+        return deletePost
+
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
 

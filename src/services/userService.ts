@@ -1,6 +1,7 @@
 import { promises } from "dns";
 import UserModel, { IUser } from "../models/userModel";
 import { log } from "console";
+import userModel from "../models/userModel";
 
 export const entreUserIntoDb = async (
   userFromClient: IUser

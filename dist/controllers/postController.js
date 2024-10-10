@@ -23,7 +23,16 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.createPost = createPost;
 // Delete a post
-const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const postDeleted = yield (0, postService_1.deletePostById)(req.params.id);
+        console.log(postDeleted);
+        res.status(204).json(postDeleted);
+    }
+    catch (err) {
+        res.status(400).json(err.message);
+    }
+});
 exports.deletePost = deletePost;
 // Get all posts
 const getPosts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });

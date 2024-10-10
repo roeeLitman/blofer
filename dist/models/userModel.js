@@ -39,12 +39,8 @@ const UserSchema = new mongoose_1.Schema({
     },
     profile: {
         type: {
-            bio: {
-                type: String,
-            },
-            socialLinks: {
-                type: [String]
-            },
+            bio: String,
+            socialLinks: [String],
         },
     },
     posts: {
