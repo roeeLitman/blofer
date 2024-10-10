@@ -30,3 +30,15 @@ export const deletePostById = async (id:string):Promise<IPost> => {
     }
 }
 
+export const getAllPosts = async (id:string):Promise<IPost[]> => {
+    try {  
+
+        const posts = await postModel.find()  
+        return posts
+
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
+

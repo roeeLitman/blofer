@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePostById = exports.createPostInDb = void 0;
+exports.getAllPosts = exports.deletePostById = exports.createPostInDb = void 0;
 const postModel_1 = __importDefault(require("../models/postModel"));
 const createPostInDb = (postReq) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -42,3 +42,14 @@ const deletePostById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.deletePostById = deletePostById;
+const getAllPosts = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const posts = yield postModel_1.default.find();
+        return posts;
+    }
+    catch (err) {
+        console.log(err);
+        throw err;
+    }
+});
+exports.getAllPosts = getAllPosts;
