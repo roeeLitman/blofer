@@ -14,7 +14,20 @@ export interface IPost extends Document {
   comments: IComment[];
 }
 
-const CommentSchema = new Schema<IComment>({});
+const CommentSchema = new Schema<IComment>({
+  content:{
+    type: String,
+    min:[5, "Comment is too short"]
+  },
+  author:{
+    type: Schema.Types.ObjectId,
+    required: [true, "user id it missing"]
+  },
+  createdAt:{
+    type: Date,
+    required: [true, "you mast enter time"]
+  }
+});
 
 const PostSchema = new Schema({})
 

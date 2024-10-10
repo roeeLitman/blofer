@@ -30,15 +30,25 @@ const UserSchema = new mongoose_1.Schema({
         type: String,
         min: [4, "name is shorts"],
         unique: true,
-        required: [true, "you most giv name"]
+        required: [true, "you most giv name"],
     },
     email: {
         type: String,
         validate: [validator_1.isEmail, "email is not  valid"],
-        required: [true, "you most giv em"]
+        required: [true, "you most giv em"],
     },
     profile: {
-        bio: {}
-    }
+        type: {
+            bio: {
+                type: String,
+            },
+            socialLinks: {
+                type: [String]
+            },
+        },
+    },
+    posts: {
+        type: [mongoose_1.Schema.Types.ObjectId],
+    },
 });
 exports.default = mongoose_1.default.model("User", UserSchema);

@@ -24,6 +24,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const CommentSchema = new mongoose_1.Schema({});
+const CommentSchema = new mongoose_1.Schema({
+    content: {
+        type: String,
+        min: [5, "Comment is too short"]
+    },
+    author: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: [true, "user id it missing"]
+    },
+    createdAt: {
+        type: Date,
+        required: [true, "you mast enter time"]
+    }
+});
 const PostSchema = new mongoose_1.Schema({});
 exports.default = mongoose_1.default.model("Post", PostSchema);
